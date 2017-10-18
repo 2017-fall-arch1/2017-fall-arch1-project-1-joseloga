@@ -1,23 +1,13 @@
-all: llDemo
+employeeList :Project1.c
+	gcc -o employeeList Project1.c
+	gcc -c Functions.c
 
-CFLAGS=-g -O3
-
-# Symbols helpful for understanding the productions
-#   $@ is the production's target
-#   $^ are the production's prerequisites
-
-llDemo: llist.o llDemo.o
-	cc -o $@ $^
-
-llist.o: llist.c llist.h
-	cc -c $(CFLAGS) llist.c
-
-llDemo.o: llDemo.c llist.h
-	cc -c $(CFLAGS) llDemo.c
 
 clean:
-	rm -f *.o llDemo
+	rm -f *.o project1
+	rm employeeList
+	rm employeeTable.txt
 
-demo: llDemo
-	(echo first; echo "second line"; echo "third and last") | ./llDemo
+demo: 
+	./employeeList
 
